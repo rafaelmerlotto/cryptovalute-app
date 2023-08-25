@@ -8,18 +8,19 @@ async function getCrypto() {
 getCrypto()
 
 function render(dati: any[]) {
-    const title: HTMLElement = document.querySelector('div') as HTMLElement
-    const card = document.createElement('div');
+    const divTitle: HTMLElement = document.querySelector('.divTitle') as HTMLElement
+    
 
     dati.map((cpt) => {
-        card.classList.add('card', cpt.name);
+        const card = document.createElement('div');
+        card.classList.add('card', cpt.id);
         card.insertAdjacentHTML('afterbegin', `
         <h3>${cpt.name} - ${cpt.symbol}</h3>
         <img src="${cpt.image} height="50px" width="50px" />
-        <p><strong>Valore attuale:</strong>${cpt.current_price}</p>
-        <p><strong>Min 24h:</strong>${cpt.low_24h} - <strong>Max 24h</strong>${cpt.high_24h}</p>
+        <p><strong>Valore attuale: </strong>${cpt.current_price} €</p>
+        <p><strong>Min 24h: </strong>${cpt.low_24h} - <strong>Max 24h: </strong>${cpt.high_24h}</p>
         `)
-title.insertAdjacentElement('afterend', card)
+        divTitle.insertAdjacentElement('afterend', card)
 
     })
 }
